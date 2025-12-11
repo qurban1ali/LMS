@@ -90,7 +90,7 @@ backend/public/uploads/
 docker-build/
 docker-compose.override.yml
 
-# Mongo / database dumps
+# Mongo / database dump
 *.dump
 *.bson
 *.gz
