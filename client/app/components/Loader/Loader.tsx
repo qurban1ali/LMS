@@ -1,0 +1,12 @@
+import "./loader.css";
+import React from "react";
+// file reanamed
+const Loader = () => {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="loader"></div>
+    </div>
+  );
+};
+
+export default Loader;

@@ -1,0 +1,93 @@
+import { styles } from '@/app/styles/style'
+import Image from 'next/image'
+import React from 'react'
+import ReviewCard from "../Review/ReviewCard"
+import { useTheme } from 'next-themes'
+import buisnesimg from "../../../public/assets/business-img.png";
+import img1 from "../../../public/assets/review/1 (1).jpg";
+import img2 from "../../../public/assets/review/1.jpg";
+import img3 from "../../../public/assets/review/2 (1).jpg";
+import img4 from "../../../public/assets/review/2.jpg";
+import img5 from "../../../public/assets/review/3.jpg";
+import img6 from "../../../public/assets/client-2.jpg";
+
+type Props = {}
+
+
+export const reviews = [
+  {
+    name: "Gene Bates",
+    avatar: img1,
+    profession: "Student | Cambridge university",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: "Verna Santos",
+    avatar: img2,
+    profession: "Full stack developer | Quarter ltd.",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: "Jay Gibbs",
+    avatar: img3,
+    profession: "computer systems engineering student | Zimbabwe",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: "Mina Davidson",
+    avatar: img4,
+    profession: "Junior Web Developer | Indonesia",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: "Rosemary Smith",
+    avatar: img5,
+    profession: "Full stack web developer | Algeria",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: "Alex Johnson",
+    avatar: img6,
+    profession: "Software Engineer | Tech Corp",
+    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+];
+
+
+const Reviews = (props: Props) => {
+    const {theme} = useTheme();
+  const isDark = theme === 'dark'
+  return (
+    <div className={`w-[90%] 800px:w-[85%] m-auto ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+        <div className={`w-full 800px:flex items-center ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+            <div className={`800px:w-[50%] w-full ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+                <Image
+                src={buisnesimg}
+                alt='buisness'
+                width={700}
+                height={700}
+                />
+            </div>
+            <div className={`800px:w-[50%] w-full ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+                <h3 className={`${styles.title} ${isDark ? 'bg-black text-white' : 'bg-white text-black'} 800px:!text-[40px] text-[35px] font-[700]`}>
+                    Our Students Are <span className='bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent transition-all duration-500 hover:from-purple-600 hover:to-blue-500'>Our Strength</span>{" "}
+                    <br /> What Thay Say About Us 
+                </h3>
+                <br />
+                <p className={`${styles.label} ${isDark ? 'bg-black text-white' : 'bg-white text-black'} text-[18px]`}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem quis atque laborum, dolorum quisquam sunt quos, velit molestiae asperiores tenetur voluptatibus necessitatibus consequuntur soluta expedita, provident recusandae eos. Saepe doloribus itaque voluptatibus earum, aut architecto voluptates ducimus dignissimos quia tempora!
+                </p>
+            </div>
+            <br />
+            <br />
+        <br />
+        </div>
+         <div className={`grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 ${isDark ? 'text-white' : 'text-black'}`}>
+            {reviews && 
+            reviews.map((i,index) => <ReviewCard item={i} key={index} />) }
+        </div>
+    </div>
+  )
+}
+
+export default Reviews
