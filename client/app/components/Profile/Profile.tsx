@@ -2,7 +2,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import SideBarProfile from './SideBarProfile';
 import { useTheme } from 'next-themes';
-import { useLogOutQuery } from '@/redux/features/auth/authApi';
+import { useLogOutMutation } from '@/redux/features/auth/authApi';
 import { signOut } from 'next-auth/react';
 import ProfileInfo from "./ProfileInfo";
 import ChangePassword from "./ChangePassword"
@@ -21,14 +21,18 @@ const Profile: FC<Props> = ({ user }) => {
   const { data, isLoading } = useGetUsersAllCoursesQuery(undefined, {})
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const [logout, setLogout] = useState(false);
-  const { } = useLogOutQuery(undefined, {
-    skip: !logout ? true : false,
-  });
+  const [logout] = useLogOutMutation();
 
   const logOutHandler = async () => {
-    setLogout(true);
-    await signOut();
+    try {
+      // Call the logout mutation (pass empty object for GET request)
+      await logout({}).unwrap();
+
+      // Then sign out from NextAuth
+      await signOut({ callbackUrl: '/' });
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   useEffect(() => {
