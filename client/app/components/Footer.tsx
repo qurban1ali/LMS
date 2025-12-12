@@ -42,7 +42,7 @@ const Footer = (props: Props) => {
                             className= {`text-base text-black dark:text-gray-300 dark:hover:text-white  ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}> My Account</Link>
                         </li>
                         <li>
-                            <Link href="/profile"
+                            <Link href="/course-dashboard"
                             className={`text-base text-black dark:text-gray-300 dark:hover:text-white  ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>Course Dashboard</Link>
                         </li>
                         </ul>
