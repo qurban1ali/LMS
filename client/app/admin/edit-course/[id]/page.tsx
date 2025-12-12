@@ -7,8 +7,7 @@ import EditCourse from "../../../components/Admin/Course/EditCourse"
 import { useTheme } from 'next-themes'
 
 const Page = ({ params }: any) => {
-  // unwrap params
-  const { id } = React.use(params);
+  const { id } = params;
   const { theme } = useTheme();
   const isDark = theme === "dark";
 

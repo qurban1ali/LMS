@@ -4,14 +4,13 @@ import CourseDetailsPage from '../../components/Course/CourseDetailsPage';
 
 // Define the type for params
 type Props = {
-    params: Promise<{ id: string }>;
+    params: { id: string };
 };
 
 const Page = ({ params }: Props) => {
-    const resolvedParams = React.use(params); // Type is now inferred as { id: string }
     return (
         <div>
-            <CourseDetailsPage id={resolvedParams.id} />
+            <CourseDetailsPage id={params.id} />
         </div>
     );
 };
